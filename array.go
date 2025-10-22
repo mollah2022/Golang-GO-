@@ -6,14 +6,13 @@ import (
 
 func main () {
 
-	var numbers = [6] int {1,2,3,4,5,6}
-	fmt.Println(numbers)
+ var numbers = [5] int {1,2,3,4,5}
+fmt.Println(numbers)
 
-	var names = [5] string {"sajib","rakib","emran","ridwan","anik"}
-	fmt.Println(names)
+   var array = [5] int {}
 
-	for  i  := 0; i < 6; i++ {
-		fmt.Println(i)
-	}
-
+   for i:=0;i < 5; i++ {
+	  fmt.Scan(&array[i])
+   }
+  fmt.Println(array)
 }
