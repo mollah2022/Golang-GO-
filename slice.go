@@ -1,24 +1,32 @@
 package main
 
-import ("fmt")
+import (
+	"fmt"
+)
 
 func main () {
+	
+  var slice = [] int {1,2,3,4,5}
+  var slice1 = [] string {"Rakib","Sajib","Habib","Rajbir"}
 
-	 var n int
-    fmt.Print("কত সংখ্যা দিতে চাও: ")
-    fmt.Scan(&n)
+  fmt.Println(slice,slice1)
 
-    nums := make([]int, 0, n) // খালি slice তৈরি
-    fmt.Println("সংখ্যাগুলো দাও:")
+  number := 10
 
-    for i := 0; i < n; i++ {
-        var x int
-        fmt.Scan(&x)
-        nums = append(nums, x) // slice এ যোগ করা
-    }
+  var marks = make([] int,number)
 
-    fmt.Println("তোমার Slice মানগুলো:")
-    for _, v := range nums {
-        fmt.Println(v)
-    }
+  for i:=0; i < number ; i++ {
+	fmt.Scan(&marks[i])
+  }
+  
+  for i:=0 ; i < number; i++ {
+	fmt.Println(marks[i])
+  }
+
+  var sliceValue = [] int {}
+
+  sliceValue = append(slice,marks...)
+
+  fmt.Println(sliceValue)
+
 }
