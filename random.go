@@ -16,10 +16,9 @@ type Products struct {
 
 var productsList []Products
 
-func handleGetProductsList(w http.ResponseWriter, r *http.Request) {
+func handleGetProduct(w http.ResponseWriter, r *http.Request) {
 
 	if r.Method != "GET" {
-
 		http.Error(w, "Please Give me Request", 400)
 	}
 
@@ -31,15 +30,16 @@ func main() {
 
 	mux := http.NewServeMux()
 
-	mux.HandleFunc("/productList", handleGetProductsList)
+	mux.HandleFunc("/products", handleGetProduct)
 
-	fmt.Println("Server Running Port 7000....")
+	fmt.Println("Runninig Server Port 3000")
 
-	err := http.ListenAndServe(":7000", mux)
+	err := http.ListenAndServe(":3000", mux)
 
 	if err != nil {
-		fmt.Print("Error Starting The server 7000", err)
+		fmt.Println("Error Starting the Server", err)
 	}
+
 }
 
 func init() {
