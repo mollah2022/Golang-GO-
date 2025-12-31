@@ -1,21 +1,14 @@
 package main
 
-import (
-	"fmt"
-)
+import "fmt"
 
-func main () {
-	var num int
-	num = 100
-	fmt.Println(num)
+func main() {
+	a := 10
+	fmt.Println(a)
+	fmt.Println(&a)
+	b := &a
+	*b = 20
 
-	fmt.Println("Pointer Address -->> ")
-
-	value :=&num
-	fmt.Println(value)
-
-	fmt.Println("Then Print Point value --->> ")
-
-	newNum := *value
-	fmt.Println(newNum)
+	fmt.Println(a)
+	fmt.Println(*b)
 }

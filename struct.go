@@ -1,37 +1,34 @@
 package main
 
-import (
-	"fmt"
-)
+import "fmt"
 
-type User struct {
-	Name string
-	Age int 
-	Job string
+
+type list struct{
+	name string
+	age int
+	dept string
 	salary float32
 }
 
-func displayValue(user User){
-    fmt.Println("Name : ",user.Name)
-	fmt.Println("Age : ",user.Age)
-	fmt.Println("Job : ",user.Job)
-	fmt.Println("Salary : ",user.salary)
-}
 
-func main () {
-	var user1 User
-	var user2 User
+func main(){
 
-	user1.Name = "Sajib"
-	user1.Age = 23
-	user1.Job = "Engineer"
-	user1.salary = 20500.60
+	var ob1 list
 
-	user2.Name = "Habib"
-	user2.Age = 30
-	user2.Job = "Businessman"
-	user2.salary = 50600.68
+	ob1.name="Sajib"
+	ob1.age = 25
+	ob1.dept = "CSE"
+	ob1.salary=200000
 
-	displayValue(user1)
-	displayValue(user2)
+	fmt.Println(ob1)
+
+	ob2 := list{
+		name: "Rakib",
+		age: 35,
+		dept: "CSE",
+		salary: 20300,
+	}
+
+	fmt.Println(ob2)
+
 }

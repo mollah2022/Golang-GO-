@@ -1,40 +1,27 @@
 package main
 
-import (
-	"fmt"
-)
+import "fmt"
 
-func main () {
+func main() {
+	var num int
+	fmt.Scanln(&num)
 
-	var Day int
-
-	fmt.Scan(&Day)
-
-	switch Day {
-	case  1:
-		fmt.Println("Satturady")
-
-		case  2:
-		fmt.Println("Sunday")
-
-		case  3:
-		fmt.Println("Monday")
-
-		case  4:
-		fmt.Println("The")
-
-		case  5:
-		fmt.Println("WED")
-
-		case 6:
-		fmt.Println("Thus")
-
-		case  7:
-		fmt.Println("Fri")
-
-		default:
-			fmt.Println("No Day")
-	} 
-	
-
+	switch num {
+	case 1:
+		fmt.Println("ONE")
+	case 2:
+		fmt.Println("TWO")
+	case 3:
+		fmt.Println("THREE")
+	case 4:
+		fmt.Println("FOUR")
+	case 5:
+		fmt.Println("FIVE")
+	case 6:
+		fmt.Println("SIX")
+	case 7:
+		fmt.Println("SEVEN")
+	default:
+		fmt.Println("Invalid number")
+	}
 }

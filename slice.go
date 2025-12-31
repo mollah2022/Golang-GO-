@@ -1,32 +1,33 @@
 package main
 
-import (
-	"fmt"
-)
+import "fmt"
 
-func main () {
-	
-  var slice = [] int {1,2,3,4,5}
-  var slice1 = [] string {"Rakib","Sajib","Habib","Rajbir"}
 
-  fmt.Println(slice,slice1)
+func main(){ 
+	var name = []int{1,2,3,4,5}
 
-  number := 10
+	fmt.Println(name)
 
-  var marks = make([] int,number)
+	num := []int{1,2,3,4,5}
 
-  for i:=0; i < number ; i++ {
-	fmt.Scan(&marks[i])
-  }
-  
-  for i:=0 ; i < number; i++ {
-	fmt.Println(marks[i])
-  }
+	fmt.Println(num)
 
-  var sliceValue = [] int {}
+	var value = make([]int,5,9)
+	value[0] = 1
+	fmt.Println(value)
 
-  sliceValue = append(slice,marks...)
+	var n int
+	fmt.Scanln(&n)
 
-  fmt.Println(sliceValue)
+	var numbers = make([]int,0,n)
 
+	for i:=0;i<n;i++{
+		var v int
+		fmt.Scanln(&v)
+		numbers = append(numbers, v)
+	}
+
+		for i:=0; i<n;i++{
+		fmt.Println(numbers[i])
+	}
 }
