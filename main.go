@@ -11,7 +11,7 @@ type Products struct {
 	Title       string  `json:"title"`
 	Description string  `json:"description"`
 	Price       float32 `json:"price"`
-	ImageUrl    string  `json:"imageUrl"`
+	ImageUrl    string  `json:"imgUrl"`
 }
 
 var ProductsList []Products
@@ -33,11 +33,46 @@ func getProducts(w http.ResponseWriter, r *http.Request){
 
 }
 
+func createProduct(w http.ResponseWriter, r *http.Request){
+	if r.Method != "POST" {
+		http.Error(w,"Please send POST request",400)
+		return
+	}
+
+	if r.Method == "OPTIONS" {
+		w.WriteHeader(200)
+		return
+	}
+
+	w.Header().Set("Access-Control-Allow-Origin","*")
+	w.Header().Set("Access-Control-Allow-Methods", "POST, OPTIONS")
+	w.Header().Set("Access-Control-Allow-Headers","Content-Type")
+	w.Header().Set("Content-Type","application/json")
+
+	var newProductList Products
+
+	decoder := json.NewDecoder(r.Body)
+	err := decoder.Decode(&newProductList)
+
+	if err != nil {
+		http.Error(w,"Please send valid json",400)
+	}
+
+	newProductList.Id = len(ProductsList) + 1
+	ProductsList = append(ProductsList, newProductList)
+
+	w.WriteHeader(201)
+
+	encoder := json.NewEncoder(w)
+	encoder.Encode(newProductList)
+}
+
 func main() {
 
 	mux := http.NewServeMux()
 
 	mux.HandleFunc("/products",getProducts)
+	mux.HandleFunc("/create-product",createProduct)
 
 	fmt.Println("Server Running Port is 8000 ")
 
