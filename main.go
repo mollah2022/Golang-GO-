@@ -23,13 +23,11 @@ func getProducts(w http.ResponseWriter, r *http.Request){
 		   return
 	}
 
-	    w.Header().Set("Access-Control-Allow-Origin", "*")
-		w.Header().Set("Access-Control-Allow-Methods", "GET")
-		w.Header().Set("Access-Control-Allow-Headers", "Content-Type")
-		w.Header().Set("Content-Type", "application/json")
+	preFlightRequest(w,r)
 
-	encoder := json.NewEncoder(w)
-	encoder.Encode(ProductsList)
+	coresHandle(w)
+
+	sendDate(w,ProductsList,200)
 
 }
 
@@ -39,15 +37,9 @@ func createProduct(w http.ResponseWriter, r *http.Request){
 		return
 	}
 
-	if r.Method == "OPTIONS" {
-		w.WriteHeader(200)
-		return
-	}
-
-	w.Header().Set("Access-Control-Allow-Origin","*")
-	w.Header().Set("Access-Control-Allow-Methods", "POST, OPTIONS")
-	w.Header().Set("Access-Control-Allow-Headers","Content-Type")
-	w.Header().Set("Content-Type","application/json")
+	preFlightRequest(w,r)
+    
+	coresHandle(w)
 
 	var newProductList Products
 
@@ -61,10 +53,29 @@ func createProduct(w http.ResponseWriter, r *http.Request){
 	newProductList.Id = len(ProductsList) + 1
 	ProductsList = append(ProductsList, newProductList)
 
-	w.WriteHeader(201)
+	sendDate(w,newProductList,201)
 
-	encoder := json.NewEncoder(w)
-	encoder.Encode(newProductList)
+	w.WriteHeader(201)
+}
+
+func coresHandle(w http.ResponseWriter){
+		w.Header().Set("Access-Control-Allow-Origin","*")
+	    w.Header().Set("Access-Control-Allow-Methods", "POST,GET,OPTIONS")
+	    w.Header().Set("Access-Control-Allow-Headers","Content-Type")
+	    w.Header().Set("Content-Type","application/json")
+}
+
+func preFlightRequest(w http.ResponseWriter,r *http.Request) {
+	if r.Method == "OPTIONS" {
+		w.WriteHeader(200)
+		return
+	}
+}
+
+func sendDate(w http.ResponseWriter,data interface{},statusCode int){
+    encoder := json.NewEncoder(w)
+	encoder.Encode(data)
+	w.WriteHeader(statusCode)
 }
 
 func main() {
