@@ -1,23 +1,16 @@
 package main
 
-import (
-	"fmt"
-)
+import "fmt"
 
-var (
-	num1 = 20
-	num2 = 30
-)
-
-func CallbackFunction(x int, y int, result func(a int, b int)) {
-	result(x, y) 
+func callbackFunction(a int, b int, op func(n int,m int) int ) int {
+	return op(a,b)
 }
 
-func resultAllFunction(value int, value1 int) {
-	sum := value + value1
-	fmt.Println(sum)
+func add(a int, b int) int {
+	return a+b
 }
 
 func main() {
-	CallbackFunction(num1, num2, resultAllFunction)
+	callback := callbackFunction(3,4,add)
+	fmt.Println(callback)
 }
