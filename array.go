@@ -3,48 +3,32 @@ package main
 import "fmt"
 
 func main() {
-	
-	var nums = [5]int{1,2,3,4,5}
+	var nums [5]int
+	nums[0] = 1
+	nums[1] = 2
+	nums[2] = 3
+	nums[3] = 4
+	nums[4] = 6
+
 	fmt.Println(nums)
 
-	numbers := [5]int{1,2,3,4,5}
-	fmt.Println(numbers)
 
-	var arrayList  [8]string
 
-     arrayList[0] = "sajib"
-	 arrayList[1] = "rakib"
-	 arrayList[2] = "tamim"
-	 arrayList[3] = "habib"
-	 arrayList[4] = "samim"
-	 arrayList[5] = "fatema"
-	 arrayList[6] = "yeamin"
-	 arrayList[7] = "sumiya"
+	var number = [5]int{1,2,3,4,5}
+	fmt.Println(number)
 
-	 fmt.Println(arrayList)
-
-	var numberList [5]int
-	numberList[0] = 1
-	numberList[1] = 2
-	numberList[2] = 3
-	numberList[3] = 4
-	numberList[4] = 5
-
-	fmt.Println(numberList)
-
-	for i := 0; i < 5; i++ {
-	fmt.Println(numberList[i])
-}
-
-    var n int
-	fmt.Scanln(&n)
-
-	var list [5]int
-
-	for i:=0; i< n ;i++{
-		fmt.Scanln(&list[i])
+	for index,value := range number {
+		fmt.Println(index," ",value)
 	}
 
-	fmt.Println(list)
+	array := [5]int{1,23,4,6,7}
+	fmt.Println(array)
 
+	for _,i := range array {
+		if(i == 6){
+			break
+		} else{
+			fmt.Println(i)
+		}
+	}
 }
