@@ -2,34 +2,24 @@ package main
 
 import "fmt"
 
-func main() {
 
-	num := 5
-	for i := 0; i < num; i++ {
+func main () {
+
+	nums := 10
+
+	for i:=0; i<nums;i++ {
+		
+		if i == 3 {
+			break
+		} 
+
 		fmt.Println(i)
 	}
 
-	i := 0
+	i := 2
 
-	for i < 5 {
-		fmt.Println(i)
+	for i <= nums {
+		fmt.Println(i) 
 		i++
 	}
-
-	numbers := []int{10, 20, 30}
-
-for i, v := range numbers {
-	fmt.Println(i, v)
-}
-
-    m := map[string]int{
-	"apple":  10,
-	"banana": 20,
-}
-
-for key, value := range m {
-	fmt.Println(key, value)
-}
-
-
 }

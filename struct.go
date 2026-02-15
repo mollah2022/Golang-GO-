@@ -3,32 +3,69 @@ package main
 import "fmt"
 
 
-type list struct{
-	name string
-	age int
-	dept string
-	salary float32
+
+type User struct {
+	Name string  `json:"name"`
+	Email string `json:"email"`
+	Password string `json:"passwor"`
+	Age int `json:"age"`
+}
+
+var userList []User
+
+func (u *User) display() {
+	fmt.Println(u.Name)
+}
+
+func NewUser(name string,email string,pass string,age int) *User {
+	return &User{
+		Name: name,
+		Email: email,
+		Password: pass,
+		Age: age,
+	}
 }
 
 
-func main(){
+func main() {
 
-	var ob1 list
+	var user User
 
-	ob1.name="Sajib"
-	ob1.age = 25
-	ob1.dept = "CSE"
-	ob1.salary=200000
+	user.Name = "Sajib Ahmed"
+	user.Email = "sajib@gmail.com"
+	user.Password = "123456"
+	user.Age = 26 
 
-	fmt.Println(ob1)
+	user.display()
 
-	ob2 := list{
-		name: "Rakib",
-		age: 35,
-		dept: "CSE",
-		salary: 20300,
+	fmt.Println(user)
+
+	user1 := User {
+		Name: "Rakib",
+		Email: "rakib@gmail.com",
+		Password: "123456789",
+		Age: 29,
 	}
+	user1.display()
 
-	fmt.Println(ob2)
+	fmt.Println(user1)
+
+	userList = append(userList, user)
+	userList = append(userList, user1)
+
+	fmt.Println("--------========----------")
+	fmt.Println(userList)
+
+
+	usr := NewUser("sajib","ahmed@gmail.com","151278",29)
+
+	fmt.Println("**********===========***********")
+	fmt.Println(usr)
+    
+	usr.display()
+
+	userList = append(userList, *usr)
+	fmt.Println("...........==========.........")
+	fmt.Println(userList)
 
 }
